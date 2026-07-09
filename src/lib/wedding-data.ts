@@ -25,6 +25,7 @@ export const ceremony = {
 export const reception = {
   venueName: "Amaryllis Hotel",
   venueNote: "Reception & celebration",
+  time: "18:00",
   // Placeholder — replace with a real Google Maps link when available
   mapUrl: "https://maps.google.com/?q=Amaryllis+Hotel+Blantyre",
 };

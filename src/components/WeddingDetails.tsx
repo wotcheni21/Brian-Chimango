@@ -64,7 +64,7 @@ export default function WeddingDetails() {
             <DetailCard
               kicker="Reception"
               title={reception.venueName}
-              lines={[reception.venueNote, "Immediately following the ceremony"]}
+              lines={[reception.venueNote, `Begins at ${reception.time}`]}
               mapUrl={reception.mapUrl}
             />
           </RevealOnScroll>
