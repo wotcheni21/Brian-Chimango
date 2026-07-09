@@ -56,10 +56,15 @@ sync with `weddingDate.display`.
 ## Connecting the RSVP form to a real backend
 
 The form currently submits via `submitRsvp()` in `src/lib/rsvp-service.ts`,
-which mocks success when `NEXT_PUBLIC_RSVP_API_URL` is unset. To go live:
+which mocks success when `NEXT_PUBLIC_RSVP_API_URL` is unset. The `server/`
+directory contains a ready-to-deploy Python (FastAPI) + SQLite backend that
+matches the expected `RsvpPayload` shape — see [server/README.md](server/README.md)
+for deployment steps and, importantly, **how to check the RSVP list**
+(browser admin page, CSV export, or JSON API).
 
-1. Deploy the backend (e.g. Python + SQLite on a VPS) with a `POST /rsvp`
-   endpoint that accepts the `RsvpPayload` shape from `src/types/rsvp.ts`.
+To go live:
+
+1. Deploy `server/` to your VPS (guide in `server/README.md`).
 2. Copy `.env.local.example` to `.env.local` and set
    `NEXT_PUBLIC_RSVP_API_URL` to that backend's base URL.
 3. Add the same env var in Vercel's Project Settings → Environment

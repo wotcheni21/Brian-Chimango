@@ -33,6 +33,13 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 !.env.local.example
+!server/.env.example
+
+# python / rsvp api
+server/venv/
+server/__pycache__/
+server/app/__pycache__/
+server/*.db
 
 # vercel
 .vercel

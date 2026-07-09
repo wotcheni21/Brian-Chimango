@@ -1,0 +1,15 @@
+[Unit]
+Description=Brian & Chimango RSVP API
+After=network.target
+
+[Service]
+User=rsvp
+Group=rsvp
+WorkingDirectory=/opt/rsvp-api
+EnvironmentFile=/opt/rsvp-api/.env
+ExecStart=/opt/rsvp-api/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
