@@ -66,14 +66,14 @@ future-couple-wedding-site
 For this frontend, set:
 
 ```env
-NEXT_PUBLIC_RSVP_API_URL=https://rsvp-api.yourdomain.com
+NEXT_PUBLIC_RSVP_API_URL=http://75.119.141.13
 NEXT_PUBLIC_WEDDING_SLUG=brian-chimango
 ```
 
 Then this site submits to:
 
 ```txt
-POST https://rsvp-api.yourdomain.com/weddings/brian-chimango/rsvp
+POST http://75.119.141.13/weddings/brian-chimango/rsvp
 ```
 
 See the API README at
@@ -85,7 +85,8 @@ export, and backup instructions.
 1. Push this frontend repo to GitHub/GitLab/Bitbucket.
 2. Import it in [Vercel](https://vercel.com/new). The Next.js preset is
    detected automatically.
-3. Add `NEXT_PUBLIC_RSVP_API_URL` and `NEXT_PUBLIC_WEDDING_SLUG` under
-   Environment Variables once the RSVP backend exists. The mock handler works
-   while `NEXT_PUBLIC_RSVP_API_URL` is unset.
+3. Add `NEXT_PUBLIC_RSVP_API_URL=http://75.119.141.13` and
+   `NEXT_PUBLIC_WEDDING_SLUG=brian-chimango` under Environment Variables once
+   the RSVP backend exists. The mock handler works while
+   `NEXT_PUBLIC_RSVP_API_URL` is unset.
 4. Deploy.
