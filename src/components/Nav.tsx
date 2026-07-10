@@ -30,6 +30,19 @@ export default function Nav() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
@@ -95,6 +108,7 @@ export default function Nav() {
 
       <div
         id="mobile-menu"
+        aria-hidden={!open}
         className={`grid overflow-hidden transition-[grid-template-rows] duration-500 ease-out md:hidden ${
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
@@ -106,6 +120,7 @@ export default function Nav() {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
+                  tabIndex={open ? undefined : -1}
                   className="block border-b border-mist/60 py-4 font-serif text-2xl text-ink"
                 >
                   {link.label}
@@ -116,6 +131,7 @@ export default function Nav() {
               <a
                 href="#rsvp"
                 onClick={() => setOpen(false)}
+                tabIndex={open ? undefined : -1}
                 className="inline-block rounded-full bg-evergreen px-6 py-3 text-xs uppercase tracking-[0.2em] text-ivory"
               >
                 RSVP Now

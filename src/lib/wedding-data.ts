@@ -68,10 +68,46 @@ export type OutfitInspoItem = {
 // Replace/extend this list once male outfit inspo images are supplied.
 // Each item becomes one card in the Outfit Inspiration grid.
 export const outfitInspo: OutfitInspoItem[] = [
-  { label: "Suit", note: "Charcoal or evergreen tailoring" },
-  { label: "Shirt", note: "Crisp white or ivory" },
-  { label: "Tie & Accents", note: "Sage or moss tones" },
-  { label: "Shoes", note: "Polished black leather" },
+  {
+    label: "Gentlemen: Suit",
+    note: "Charcoal tailoring with evergreen accents",
+    image: "/images/outfit/gentlemen-suit.png",
+  },
+  {
+    label: "Gentlemen: Shirt",
+    note: "Crisp white or ivory with clean tailoring",
+    image: "/images/outfit/gentlemen-shirt.png",
+  },
+  {
+    label: "Gentlemen: Tie & Accents",
+    note: "Sage, moss and evergreen details",
+    image: "/images/outfit/gentlemen-accents.png",
+  },
+  {
+    label: "Gentlemen: Shoes",
+    note: "Polished black leather",
+    image: "/images/outfit/gentlemen-shoes.png",
+  },
+  {
+    label: "Ladies: Dress",
+    note: "Soft sage with warm gold accents",
+    image: "/images/outfit/ladies-dress.png",
+  },
+  {
+    label: "Ladies: Jumpsuit",
+    note: "Evergreen tailoring with ivory details",
+    image: "/images/outfit/ladies-jumpsuit.png",
+  },
+  {
+    label: "Ladies: Accessories",
+    note: "Ivory, sage and gold finishing touches",
+    image: "/images/outfit/ladies-accessories.png",
+  },
+  {
+    label: "Ladies: Shoes",
+    note: "Warm gold or nude formal heels",
+    image: "/images/outfit/ladies-shoes.png",
+  },
 ];
 
 export const gallery = {

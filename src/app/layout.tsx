@@ -15,14 +15,30 @@ const body = Manrope({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const title = "Brian & Chimango — 26 August 2026";
+const description =
+  "Join Brian and Chimango as they say 'I do' on 26 August 2026. Ceremony, schedule, gallery and RSVP.";
+
 export const metadata: Metadata = {
-  title: "Brian & Chimango — 26 August 2026",
-  description:
-    "Join Brian and Chimango as they say 'I do' on 26 August 2026. Ceremony, schedule, gallery and RSVP.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Brian & Chimango — 26 August 2026",
-    description:
-      "Join Brian and Chimango as they say 'I do' on 26 August 2026.",
+    title,
+    description,
+    url: "/",
+    siteName: "Brian & Chimango Wedding",
+    images: ["/images/couple-doorway-full.jpg"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
     images: ["/images/couple-doorway-full.jpg"],
   },
 };

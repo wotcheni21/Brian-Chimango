@@ -69,7 +69,7 @@ export default function Countdown() {
 
         <RevealOnScroll delayMs={120}>
           <div
-            className="flex gap-4 sm:gap-8"
+            className="grid grid-cols-2 gap-4 sm:flex sm:gap-8"
             role="timer"
             aria-live="polite"
             aria-label={`${timeLeft.days} days, ${timeLeft.hours} hours, ${timeLeft.minutes} minutes and ${timeLeft.seconds} seconds until the wedding`}

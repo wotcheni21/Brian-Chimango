@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { submitRsvp } from "@/lib/rsvp-service";
-import type { AttendanceStatus, RsvpPayload } from "@/types/rsvp";
+import type { AttendanceStatus, RsvpPayload, RsvpResult } from "@/types/rsvp";
 
 type FormState = {
   fullName: string;
@@ -86,7 +86,15 @@ export default function RsvpForm() {
       message: form.message.trim() || undefined,
     };
 
-    const result = await submitRsvp(payload);
+    let result: RsvpResult;
+    try {
+      result = await submitRsvp(payload);
+    } catch {
+      result = {
+        ok: false as const,
+        error: "Something went wrong while sending your RSVP. Please try again.",
+      };
+    }
 
     if (result.ok) {
       setStatus("success");
@@ -140,8 +148,10 @@ export default function RsvpForm() {
             value={form.fullName}
             onChange={(e) => update("fullName", e.target.value)}
             aria-invalid={Boolean(errors.fullName)}
+            aria-describedby={errors.fullName ? "fullName-error" : undefined}
             className={inputClass(Boolean(errors.fullName))}
             placeholder="Jane Doe"
+            required
           />
         </Field>
 
@@ -154,8 +164,10 @@ export default function RsvpForm() {
             value={form.phone}
             onChange={(e) => update("phone", e.target.value)}
             aria-invalid={Boolean(errors.phone)}
+            aria-describedby={errors.phone ? "phone-error" : undefined}
             className={inputClass(Boolean(errors.phone))}
             placeholder="+265 900 000 000"
+            required
           />
         </Field>
       </div>
@@ -169,8 +181,10 @@ export default function RsvpForm() {
           value={form.email}
           onChange={(e) => update("email", e.target.value)}
           aria-invalid={Boolean(errors.email)}
+          aria-describedby={errors.email ? "email-error" : undefined}
           className={inputClass(Boolean(errors.email))}
           placeholder="jane@example.com"
+          required
         />
       </Field>
 
@@ -221,7 +235,9 @@ export default function RsvpForm() {
           value={form.guests}
           onChange={(e) => update("guests", e.target.value)}
           aria-invalid={Boolean(errors.guests)}
+          aria-describedby={errors.guests ? "guests-error" : undefined}
           className={inputClass(Boolean(errors.guests))}
+          required
         />
       </Field>
 
@@ -275,7 +291,7 @@ function Field({
       </label>
       {children}
       {error && (
-        <span className="text-xs text-red-600" role="alert">
+        <span id={`${htmlFor}-error`} className="text-xs text-red-600" role="alert">
           {error}
         </span>
       )}

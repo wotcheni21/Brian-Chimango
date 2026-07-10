@@ -4,6 +4,7 @@ import type { RsvpPayload, RsvpResult } from "@/types/rsvp";
 // backend (e.g. a Python + SQLite API on a VPS). Until then, submissions are
 // handled by submitRsvpMock so the form remains fully testable.
 const RSVP_API_URL = process.env.NEXT_PUBLIC_RSVP_API_URL;
+const WEDDING_SLUG = process.env.NEXT_PUBLIC_WEDDING_SLUG ?? "brian-chimango";
 
 async function submitRsvpMock(payload: RsvpPayload): Promise<RsvpResult> {
   await new Promise((resolve) => setTimeout(resolve, 900));
@@ -20,11 +21,14 @@ async function submitRsvpRemote(
   apiUrl: string
 ): Promise<RsvpResult> {
   try {
-    const response = await fetch(`${apiUrl.replace(/\/$/, "")}/rsvp`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    const response = await fetch(
+      `${apiUrl.replace(/\/$/, "")}/weddings/${WEDDING_SLUG}/rsvp`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }
+    );
 
     if (!response.ok) {
       return { ok: false, error: "The RSVP service could not be reached. Please try again shortly." };
