@@ -22,9 +22,8 @@ Open [http://localhost:3000](http://localhost:3000).
   content: couple names, date, venues, schedule, RSVP contacts, outfit inspo
   items and gallery images.
 - `src/lib/rsvp-service.ts` - RSVP submission logic. Uses
-  `NEXT_PUBLIC_RSVP_API_URL` when set, otherwise falls back to a mock
-  submission. Real submissions post to
-  `/weddings/{NEXT_PUBLIC_WEDDING_SLUG}/rsvp`.
+  the same-origin `/api/rsvp` proxy so HTTPS frontends can safely reach the
+  VPS API.
 - `src/types/rsvp.ts` - shared RSVP types.
 - `src/components/` - one component per section plus shared primitives.
 - `public/images/` - couple photos used across the site.
@@ -66,14 +65,14 @@ future-couple-wedding-site
 For this frontend, set:
 
 ```env
-NEXT_PUBLIC_RSVP_API_URL=http://75.119.141.13
+RSVP_API_URL=http://75.119.141.13
 NEXT_PUBLIC_WEDDING_SLUG=brian-chimango
 ```
 
 Then this site submits to:
 
 ```txt
-POST http://75.119.141.13/weddings/brian-chimango/rsvp
+POST /api/rsvp/weddings/brian-chimango/rsvp
 ```
 
 See the API README at
@@ -85,8 +84,6 @@ export, and backup instructions.
 1. Push this frontend repo to GitHub/GitLab/Bitbucket.
 2. Import it in [Vercel](https://vercel.com/new). The Next.js preset is
    detected automatically.
-3. Add `NEXT_PUBLIC_RSVP_API_URL=http://75.119.141.13` and
-   `NEXT_PUBLIC_WEDDING_SLUG=brian-chimango` under Environment Variables once
-   the RSVP backend exists. The mock handler works while
-   `NEXT_PUBLIC_RSVP_API_URL` is unset.
+3. Add `RSVP_API_URL=http://75.119.141.13` and
+   `NEXT_PUBLIC_WEDDING_SLUG=brian-chimango` under Environment Variables.
 4. Deploy.

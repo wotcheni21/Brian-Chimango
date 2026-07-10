@@ -28,7 +28,7 @@ type LoadState =
   | { status: "loaded"; rows: RsvpRow[]; summary: RsvpSummary }
   | { status: "error"; message: string };
 
-const API_URL = process.env.NEXT_PUBLIC_RSVP_API_URL;
+const API_URL = "/api/rsvp";
 const WEDDING_SLUG = process.env.NEXT_PUBLIC_WEDDING_SLUG ?? "brian-chimango";
 
 function TokenForm({ token }: { token: string }) {
@@ -194,13 +194,6 @@ export default function AdminDashboard() {
           </div>
         </section>
 
-        {!baseApiUrl && (
-          <Notice
-            title="API URL missing"
-            message="Set NEXT_PUBLIC_RSVP_API_URL in .env.local, then restart the frontend dev server."
-          />
-        )}
-
         {!token && (
           <TokenForm token={token} />
         )}
@@ -329,15 +322,6 @@ function SummaryCards({ summary }: { summary: RsvpSummary }) {
           <div className="mt-3 text-sm text-graphite">{card.hint}</div>
         </div>
       ))}
-    </section>
-  );
-}
-
-function Notice({ title, message }: { title: string; message: string }) {
-  return (
-    <section className="rounded-[1.4rem] border border-red-200 bg-red-50 p-6 text-red-800">
-      <h2 className="font-bold">{title}</h2>
-      <p className="mt-2 text-sm leading-6">{message}</p>
     </section>
   );
 }
