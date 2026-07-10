@@ -47,8 +47,9 @@ function TokenForm({ token }: { token: string }) {
     <section className="rounded-[1.4rem] border border-evergreen/10 bg-paper/90 p-6 shadow-[0_20px_60px_rgba(44,46,44,0.08)]">
       <h2 className="font-serif text-3xl text-ink">Enter admin token</h2>
       <p className="mt-2 text-sm leading-6 text-graphite">
-        This page reads the RSVP API using your admin token. For local testing,
-        use <code className="rounded bg-fog px-1.5 py-0.5">dev-token</code>.
+        This page reads the RSVP API using your admin token. For local and
+        production access, use{" "}
+        <code className="rounded bg-fog px-1.5 py-0.5">august26</code>.
       </p>
       <form onSubmit={handleTokenSubmit} className="mt-5 flex flex-col gap-3 sm:flex-row">
         <input
