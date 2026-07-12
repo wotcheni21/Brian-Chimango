@@ -12,3 +12,8 @@ export type RsvpPayload = {
 export type RsvpResult =
   | { ok: true }
   | { ok: false; error: string };
+
+export type WeddingWishPayload = {
+  name: string;
+  message: string;
+};
