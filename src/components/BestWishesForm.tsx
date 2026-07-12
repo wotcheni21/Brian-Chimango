@@ -33,7 +33,11 @@ function validate(form: FormState): FieldErrors {
   return errors;
 }
 
-export default function BestWishesForm() {
+type BestWishesFormProps = {
+  embedded?: boolean;
+};
+
+export default function BestWishesForm({ embedded = false }: BestWishesFormProps) {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<Status>("idle");
@@ -79,7 +83,11 @@ export default function BestWishesForm() {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="flex flex-col gap-5 rounded-[2rem] border border-ivory/15 bg-ivory/5 p-8 backdrop-blur-sm sm:p-10"
+      className={
+        embedded
+          ? "flex flex-col gap-5"
+          : "flex flex-col gap-5 rounded-[2rem] border border-ivory/15 bg-ivory/5 p-8 backdrop-blur-sm sm:p-10"
+      }
     >
       <div className="flex flex-col gap-3">
         <span className="text-xs uppercase tracking-[0.3em] text-mint">

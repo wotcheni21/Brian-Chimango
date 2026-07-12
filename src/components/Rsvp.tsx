@@ -46,10 +46,12 @@ export default function Rsvp() {
           </RevealOnScroll>
 
           <RevealOnScroll delayMs={140}>
-            <div className="flex h-full flex-col gap-8">
-              <BestWishesForm />
+            <aside className="flex h-full flex-col gap-8 rounded-[2rem] border border-ivory/15 bg-ivory/5 p-8 backdrop-blur-sm sm:p-10">
+              <BestWishesForm embedded />
 
-              <div className="flex flex-col justify-between gap-8 rounded-[2rem] border border-ivory/15 bg-ivory/5 p-8 backdrop-blur-sm sm:p-10">
+              <div className="h-px bg-ivory/15" />
+
+              <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-3">
                   <span className="text-xs uppercase tracking-[0.3em] text-mint">
                     Prefer to reach out directly?
@@ -92,7 +94,7 @@ export default function Rsvp() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </aside>
           </RevealOnScroll>
         </div>
       </div>
