@@ -40,15 +40,18 @@ function PaletteCard({
         <p className="mt-4 min-h-[4.5rem] text-sm leading-relaxed text-graphite sm:text-base">
           {description}
         </p>
-        <div className="mt-auto grid grid-cols-1 gap-3 pt-7 sm:grid-cols-2">
+        <div className="mt-auto flex flex-wrap gap-x-4 gap-y-3 pt-7">
           {swatches.map((swatch) => (
-            <div key={swatch.label} className="flex items-center gap-2">
+            <div
+              key={swatch.label}
+              className="flex min-w-[6.75rem] max-w-full items-center gap-2"
+            >
               <span
-                className="h-8 w-8 shrink-0 rounded-full border border-ink/10"
+                className="h-7 w-7 shrink-0 rounded-full border border-ink/10 sm:h-8 sm:w-8"
                 style={{ backgroundColor: swatch.color }}
                 aria-hidden
               />
-              <span className="text-xs uppercase tracking-[0.18em] text-graphite">
+              <span className="break-words text-[11px] uppercase tracking-[0.12em] text-graphite">
                 {swatch.label}
               </span>
             </div>
