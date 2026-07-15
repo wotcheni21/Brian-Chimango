@@ -21,10 +21,9 @@ export const weddingDate = {
 
 export const ceremony = {
   venueName: "Church on the Rock",
-  venueNote: "Next to Blantyre Girls",
+  venueNote: "Behind Blantyre Girls",
   time: "13:00",
-  // Placeholder — replace with a real Google Maps link when available
-  mapUrl: "https://maps.google.com/?q=Church+on+the+Rock+Blantyre",
+  mapUrl: "https://maps.google.com/?q=629F%2BQXF%2C+Blantyre",
 };
 
 export const reception = {
