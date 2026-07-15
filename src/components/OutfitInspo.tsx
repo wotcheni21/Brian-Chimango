@@ -123,9 +123,13 @@ export default function OutfitInspo() {
           />
         </RevealOnScroll>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className="mt-14 grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
           {outfitPalettes.map((palette, index) => (
-            <RevealOnScroll key={palette.title} delayMs={index * 120}>
+            <RevealOnScroll
+              key={palette.title}
+              className="h-full"
+              delayMs={index * 120}
+            >
               <PaletteCard {...palette} />
             </RevealOnScroll>
           ))}
