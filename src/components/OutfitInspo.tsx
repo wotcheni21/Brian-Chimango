@@ -17,32 +17,34 @@ function PaletteCard({
   swatches: { label: string; color: string }[];
 }) {
   return (
-    <div className="grid overflow-hidden rounded-[1.75rem] border border-mist bg-paper shadow-[0_24px_60px_-38px_rgba(44,46,44,0.45)] sm:grid-cols-[0.95fr_1.05fr]">
-      <div className="relative min-h-[340px] bg-ivory">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          unoptimized
-          sizes="(min-width: 1024px) 30vw, 90vw"
-          className="object-contain p-6"
-        />
+    <div className="grid h-full min-h-[520px] overflow-hidden rounded-[1.75rem] border border-mist bg-paper shadow-[0_24px_60px_-38px_rgba(44,46,44,0.45)] sm:grid-cols-2">
+      <div className="flex min-h-[300px] items-center justify-center bg-ivory px-7 py-8">
+        <div className="relative aspect-[2/3] h-full max-h-[380px] w-full max-w-[220px]">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            unoptimized
+            sizes="(min-width: 1024px) 20vw, 70vw"
+            className="object-contain"
+          />
+        </div>
       </div>
-      <div className="flex flex-col justify-center px-6 py-8 sm:px-8">
+      <div className="flex min-h-[300px] flex-col px-6 py-8 sm:px-8">
         <span className="text-xs uppercase tracking-[0.32em] text-moss">
           {audience}
         </span>
-        <h3 className="mt-4 font-serif text-3xl leading-tight text-ink sm:text-4xl">
+        <h3 className="mt-5 min-h-[5.5rem] font-serif text-3xl leading-tight text-ink sm:text-4xl">
           {title}
         </h3>
-        <p className="mt-4 text-sm leading-relaxed text-graphite sm:text-base">
+        <p className="mt-4 min-h-[4.5rem] text-sm leading-relaxed text-graphite sm:text-base">
           {description}
         </p>
-        <div className="mt-7 flex flex-wrap gap-3">
+        <div className="mt-auto grid grid-cols-1 gap-3 pt-7 sm:grid-cols-2">
           {swatches.map((swatch) => (
             <div key={swatch.label} className="flex items-center gap-2">
               <span
-                className="h-8 w-8 rounded-full border border-ink/10"
+                className="h-8 w-8 shrink-0 rounded-full border border-ink/10"
                 style={{ backgroundColor: swatch.color }}
                 aria-hidden
               />
