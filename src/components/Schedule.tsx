@@ -11,13 +11,13 @@ export default function Schedule() {
             eyebrow="Order of Events"
             title="How the day unfolds"
             tone="light"
-            description="A gentle guide to the day — timings are approximate and will be finalised closer to the date."
+            description="A gentle guide through the ceremony, luncheon, photography and evening celebration."
           />
         </RevealOnScroll>
 
         <ol className="mt-16 flex flex-col">
           {schedule.map((item, index) => (
-            <RevealOnScroll key={item.time} delayMs={index * 70}>
+            <RevealOnScroll key={`${item.time}-${item.title}`} delayMs={index * 70}>
               <li className="group relative flex gap-6 border-t border-ivory/15 py-7 first:border-t-0 sm:gap-10">
                 <div className="flex w-20 shrink-0 flex-col items-start sm:w-28">
                   <span className="font-serif text-2xl text-mint sm:text-3xl">
@@ -33,6 +33,16 @@ export default function Schedule() {
                     <p className="text-sm text-fog/80 sm:text-base">
                       {item.description}
                     </p>
+                  )}
+                  {item.details && (
+                    <ul className="mt-4 grid gap-2 text-sm text-fog/75 sm:grid-cols-2">
+                      {item.details.map((detail) => (
+                        <li key={detail} className="flex gap-2">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mint/80" />
+                          <span>{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
                   )}
                 </div>
               </li>

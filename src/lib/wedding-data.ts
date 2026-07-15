@@ -38,14 +38,33 @@ export type ScheduleItem = {
   time: string;
   title: string;
   description?: string;
+  details?: string[];
 };
 
-// Placeholder order of events — confirm with the couple before publishing
 export const schedule: ScheduleItem[] = [
-  { time: "12:00", title: "Guest Arrival", description: "Doors open at the church" },
-  { time: "13:00", title: "Church Ceremony", description: "Exchange of vows" },
-  { time: "15:00", title: "Couple Photo Session", description: "Portraits with the newlyweds" },
-  { time: "17:00", title: "Reception Guest Arrival", description: "Welcome drinks at Amaryllis Hotel" },
+  { time: "12:30", title: "Guests Arrive", description: "Guests arrive and take their seats" },
+  { time: "13:00", title: "Bridal Party Arrival", description: "Arrival of the bridal party and processional" },
+  { time: "13:05", title: "Opening Prayer" },
+  { time: "13:10", title: "Welcome Address" },
+  { time: "13:15", title: "Praise & Worship / Hymn" },
+  { time: "13:20", title: "Scripture Reading" },
+  {
+    time: "13:30 - 14:15",
+    title: "Wedding Officiation",
+    description: "The formal marriage ceremony",
+    details: [
+      "Exchange of marriage vows",
+      "Exchange of rings",
+      "Pronouncement of marriage",
+      "Signing of the marriage register",
+      "Final blessing",
+    ],
+  },
+  { time: "14:15", title: "Presentation of the Newlyweds" },
+  { time: "14:20", title: "Recessional & Congratulations" },
+  { time: "14:30", title: "Luncheon" },
+  { time: "15:30", title: "Photography Session", description: "Portraits with the newlyweds" },
+  { time: "17:00", title: "Travel & Freshen Up", description: "Preparation for the reception" },
   { time: "18:00", title: "Dinner & Celebration", description: "Speeches and dinner service" },
   { time: "20:00", title: "Toasts & Cake Cutting", description: "Raise a glass to the newlyweds" },
   { time: "21:00", title: "Closing & After Celebration", description: "Dancing into the evening" },
