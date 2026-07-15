@@ -27,6 +27,8 @@ type Status = "idle" | "submitting" | "success" | "error";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phonePattern = /^[+\d][\d\s-]{6,}$/;
+const minGuests = 1;
+const maxGuests = 3;
 
 function validate(form: FormState): FieldErrors {
   const errors: FieldErrors = {};
@@ -44,8 +46,12 @@ function validate(form: FormState): FieldErrors {
   }
 
   const guestsNumber = Number(form.guests);
-  if (!Number.isInteger(guestsNumber) || guestsNumber < 1 || guestsNumber > 10) {
-    errors.guests = "Guest count must be between 1 and 10.";
+  if (
+    !Number.isInteger(guestsNumber) ||
+    guestsNumber < minGuests ||
+    guestsNumber > maxGuests
+  ) {
+    errors.guests = "Guest count must be between 1 and 3.";
   }
 
   return errors;
@@ -230,8 +236,8 @@ export default function RsvpForm() {
           id="guests"
           name="guests"
           type="number"
-          min={1}
-          max={10}
+          min={minGuests}
+          max={maxGuests}
           value={form.guests}
           onChange={(e) => update("guests", e.target.value)}
           aria-invalid={Boolean(errors.guests)}

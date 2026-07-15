@@ -1,7 +1,7 @@
 import Image from "next/image";
 import RevealOnScroll from "./RevealOnScroll";
 import SectionHeading from "./SectionHeading";
-import { couple } from "@/lib/wedding-data";
+import { couple, familyStory } from "@/lib/wedding-data";
 
 export default function OurStory() {
   return (
@@ -21,23 +21,45 @@ export default function OurStory() {
 
         <RevealOnScroll className="order-1 lg:order-2" delayMs={120}>
           <SectionHeading
-            eyebrow="Welcome"
-            title="A love, gently unfolding"
+            eyebrow="Our Story"
+            title="A love with roots"
             align="left"
           />
           <div className="mt-8 flex flex-col gap-5 text-base leading-relaxed text-graphite sm:text-lg">
             <p>
-              What began as quiet conversation grew, in time, into the kind of
-              partnership that steadies a room — patient, warm, and entirely
-              unhurried. {couple.partnerOne} and {couple.partnerTwo} have built
-              a life together defined by small rituals and large kindnesses.
+              {couple.partnerOne} and {couple.partnerTwo} began their marriage
+              journey at court on {familyStory.courtMarriageDate}. Since then,
+              their love has grown into a home shaped by patience, faith, and
+              the everyday kindnesses that make a family strong.
             </p>
             <p>
-              Now, surrounded by the people who have shaped their story, they
-              are ready to begin its next chapter. We would be honoured to
-              have you there to witness it.
+              Together they have been blessed with {familyStory.children}, and
+              now they gather the people who have shaped their story to witness
+              this next chapter with joy, gratitude, and celebration.
             </p>
           </div>
+
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="border-l-2 border-gilt bg-ivory px-5 py-4">
+              <span className="text-xs uppercase tracking-[0.28em] text-moss">
+                First marriage
+              </span>
+              <p className="mt-2 font-serif text-2xl text-ink">
+                {familyStory.courtMarriageDate}
+              </p>
+              <p className="mt-1 text-sm text-graphite">At court</p>
+            </div>
+            <div className="border-l-2 border-evergreen bg-ivory px-5 py-4">
+              <span className="text-xs uppercase tracking-[0.28em] text-moss">
+                Family
+              </span>
+              <p className="mt-2 font-serif text-2xl text-ink">
+                {familyStory.children}
+              </p>
+              <p className="mt-1 text-sm text-graphite">Three sons</p>
+            </div>
+          </div>
+
           <a
             href="#details"
             className="mt-10 inline-flex w-fit items-center gap-3 border-b border-evergreen pb-1 text-xs uppercase tracking-[0.3em] text-evergreen transition-colors hover:text-moss"

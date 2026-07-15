@@ -7,6 +7,11 @@ export const couple = {
   hashtag: "#Brian&Chimango2026",
 };
 
+export const familyStory = {
+  courtMarriageDate: "16 February 2013",
+  children: "3 boys",
+};
+
 export const weddingDate = {
   // ISO 8601, used by the countdown — keep in sync with the display date below
   iso: "2026-08-26T13:00:00+02:00",
@@ -65,22 +70,58 @@ export type OutfitInspoItem = {
   image?: string;
 };
 
+export type OutfitPalette = {
+  audience: string;
+  title: string;
+  description: string;
+  image: string;
+  swatches: { label: string; color: string }[];
+};
+
+export const outfitPalettes: OutfitPalette[] = [
+  {
+    audience: "For men",
+    title: "Grey colour palette",
+    description: "Clean grey tailoring, from deep charcoal to soft silver.",
+    image: "/images/new pictures/Colour Palette 1.jpeg",
+    swatches: [
+      { label: "Charcoal", color: "#535557" },
+      { label: "Graphite", color: "#6f706e" },
+      { label: "Silver", color: "#a2a5ab" },
+      { label: "Mist", color: "#c9c9c7" },
+    ],
+  },
+  {
+    audience: "For ladies",
+    title: "Sage green with gold accessories",
+    description: "Soft sage and evergreen outfits finished with warm gold accents.",
+    image: "/images/new pictures/Colour Palette 2.jpeg",
+    swatches: [
+      { label: "Sage Hint", color: "#bfcfbb" },
+      { label: "Sage", color: "#8ea58c" },
+      { label: "Moss", color: "#738a6e" },
+      { label: "Evergreen", color: "#344c3d" },
+      { label: "Gold", color: "#b79b6b" },
+    ],
+  },
+];
+
 // Replace/extend this list once male outfit inspo images are supplied.
 // Each item becomes one card in the Outfit Inspiration grid.
 export const outfitInspo: OutfitInspoItem[] = [
   {
     label: "Gentlemen: Suit",
-    note: "Charcoal tailoring with evergreen accents",
+    note: "Charcoal or mid-grey tailoring",
     image: "/images/outfit/gentlemen-suit.png",
   },
   {
     label: "Gentlemen: Shirt",
-    note: "Crisp white or ivory with clean tailoring",
+    note: "Crisp white with clean grey tailoring",
     image: "/images/outfit/gentlemen-shirt.png",
   },
   {
     label: "Gentlemen: Tie & Accents",
-    note: "Sage, moss and evergreen details",
+    note: "Grey, silver or charcoal finishing details",
     image: "/images/outfit/gentlemen-accents.png",
   },
   {
@@ -90,17 +131,17 @@ export const outfitInspo: OutfitInspoItem[] = [
   },
   {
     label: "Ladies: Dress",
-    note: "Soft sage with warm gold accents",
+    note: "Soft sage with warm gold accessories",
     image: "/images/outfit/ladies-dress.png",
   },
   {
     label: "Ladies: Jumpsuit",
-    note: "Evergreen tailoring with ivory details",
+    note: "Sage or evergreen tailoring",
     image: "/images/outfit/ladies-jumpsuit.png",
   },
   {
     label: "Ladies: Accessories",
-    note: "Ivory, sage and gold finishing touches",
+    note: "Gold finishing touches",
     image: "/images/outfit/ladies-accessories.png",
   },
   {
@@ -115,18 +156,47 @@ export const gallery = {
     {
       src: "/images/couple-doorway-full.jpg",
       alt: "Brian and Chimango dressed in black, arriving at a doorway together",
+      caption: "Together, then and now",
     },
     {
       src: "/images/couple-reception-portrait.jpg",
       alt: "Brian and Chimango seated at a candlelit reception table",
+      caption: "A partnership built over time",
     },
     {
       src: "/images/couple-beach-bw.jpg",
       alt: "Black and white portrait of Brian and Chimango by the sea",
+      caption: "Quiet moments",
+      monochrome: true,
     },
     {
       src: "/images/couple-doorway-close.jpg",
       alt: "Close portrait of Brian and Chimango at the doorway",
+      caption: "Favourite memories",
+    },
+    {
+      src: "/images/new pictures/WhatsApp Image 2026-07-15 at 14.09.24.jpeg",
+      alt: "A black and white family memory from Brian and Chimango",
+      caption: "Family first",
+      monochrome: true,
+    },
+    {
+      src: "/images/new pictures/WhatsApp Image 2026-07-15 at 14.09.25.jpeg",
+      alt: "A black and white family portrait from Brian and Chimango",
+      caption: "The life they built",
+      monochrome: true,
+    },
+    {
+      src: "/images/new pictures/WhatsApp Image 2026-07-15 at 14.09.26.jpeg",
+      alt: "A black and white memory from Brian and Chimango's journey",
+      caption: "Years of grace",
+      monochrome: true,
+    },
+    {
+      src: "/images/new pictures/WhatsApp Image 2026-07-15 at 14.09.27.jpeg",
+      alt: "A black and white family celebration memory",
+      caption: "Home and heart",
+      monochrome: true,
     },
   ],
 };

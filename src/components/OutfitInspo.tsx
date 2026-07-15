@@ -1,13 +1,69 @@
 import Image from "next/image";
 import RevealOnScroll from "./RevealOnScroll";
 import SectionHeading from "./SectionHeading";
-import { outfitInspo } from "@/lib/wedding-data";
+import { outfitInspo, outfitPalettes } from "@/lib/wedding-data";
+
+function PaletteCard({
+  audience,
+  title,
+  description,
+  image,
+  swatches,
+}: {
+  audience: string;
+  title: string;
+  description: string;
+  image: string;
+  swatches: { label: string; color: string }[];
+}) {
+  return (
+    <div className="grid overflow-hidden rounded-[1.75rem] border border-mist bg-paper shadow-[0_24px_60px_-38px_rgba(44,46,44,0.45)] sm:grid-cols-[0.95fr_1.05fr]">
+      <div className="relative min-h-[340px] bg-ivory">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          unoptimized
+          sizes="(min-width: 1024px) 30vw, 90vw"
+          className="object-contain p-6"
+        />
+      </div>
+      <div className="flex flex-col justify-center px-6 py-8 sm:px-8">
+        <span className="text-xs uppercase tracking-[0.32em] text-moss">
+          {audience}
+        </span>
+        <h3 className="mt-4 font-serif text-3xl leading-tight text-ink sm:text-4xl">
+          {title}
+        </h3>
+        <p className="mt-4 text-sm leading-relaxed text-graphite sm:text-base">
+          {description}
+        </p>
+        <div className="mt-7 flex flex-wrap gap-3">
+          {swatches.map((swatch) => (
+            <div key={swatch.label} className="flex items-center gap-2">
+              <span
+                className="h-8 w-8 rounded-full border border-ink/10"
+                style={{ backgroundColor: swatch.color }}
+                aria-hidden
+              />
+              <span className="text-xs uppercase tracking-[0.18em] text-graphite">
+                {swatch.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function OutfitCard({
   label,
+  note,
   image,
 }: {
   label: string;
+  note?: string;
   image?: string;
 }) {
   return (
@@ -43,10 +99,11 @@ function OutfitCard({
         </div>
       )}
 
-      <div className="absolute inset-x-0 bottom-0 flex flex-col gap-0.5 bg-gradient-to-t from-ink/80 to-transparent p-5">
+      <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1 bg-gradient-to-t from-ink/85 to-transparent p-5">
         <span className="font-serif text-lg text-ivory sm:text-xl">
           {label}
         </span>
+        {note && <span className="text-xs leading-relaxed text-fog">{note}</span>}
       </div>
     </div>
   );
@@ -60,14 +117,26 @@ export default function OutfitInspo() {
           <SectionHeading
             eyebrow="Outfit Inspiration"
             title="What to wear"
-            description="Think tailored, timeless, and in step with our sage, charcoal, ivory and evergreen palette."
+            description="For men, grey tones. For ladies, sage green finished with gold accessories."
           />
         </RevealOnScroll>
+
+        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {outfitPalettes.map((palette, index) => (
+            <RevealOnScroll key={palette.title} delayMs={index * 120}>
+              <PaletteCard {...palette} />
+            </RevealOnScroll>
+          ))}
+        </div>
 
         <div className="mt-14 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {outfitInspo.map((item, index) => (
             <RevealOnScroll key={item.label} delayMs={index * 80}>
-              <OutfitCard label={item.label} image={item.image} />
+              <OutfitCard
+                label={item.label}
+                note={item.note}
+                image={item.image}
+              />
             </RevealOnScroll>
           ))}
         </div>

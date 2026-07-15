@@ -3,8 +3,14 @@ import RevealOnScroll from "./RevealOnScroll";
 import SectionHeading from "./SectionHeading";
 import { gallery } from "@/lib/wedding-data";
 
+function imageClass(monochrome?: boolean) {
+  return `object-cover transition-transform duration-700 hover:scale-105 ${
+    monochrome ? "grayscale contrast-110" : ""
+  }`;
+}
+
 export default function Gallery() {
-  const [featured, second, third, fourth] = gallery.images;
+  const [featured, second, third, fourth, ...memories] = gallery.images;
 
   return (
     <section id="gallery" className="bg-paper py-24 sm:py-32">
@@ -13,46 +19,46 @@ export default function Gallery() {
           <SectionHeading
             eyebrow="Gallery"
             title="Moments so far"
-            description="A few frames from the story that brought us here."
+            description="A few frames from the story that brought us here, including family memories in timeless black and white."
           />
         </RevealOnScroll>
 
         <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-6 sm:grid-rows-2">
           <RevealOnScroll className="sm:col-span-4 sm:row-span-2">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] sm:aspect-auto sm:h-full">
+            <figure className="group relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] sm:aspect-auto sm:h-full">
               <Image
                 src={featured.src}
                 alt={featured.alt}
                 fill
                 sizes="(min-width: 640px) 60vw, 100vw"
-                className="object-cover transition-transform duration-700 hover:scale-105"
+                className={imageClass(featured.monochrome)}
               />
-            </div>
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/75 to-transparent px-6 pb-6 pt-16 font-serif text-2xl text-ivory">
+                {featured.caption}
+              </figcaption>
+            </figure>
           </RevealOnScroll>
 
-          <RevealOnScroll className="sm:col-span-2" delayMs={100}>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] sm:h-full">
-              <Image
-                src={second.src}
-                alt={second.alt}
-                fill
-                sizes="(min-width: 640px) 30vw, 100vw"
-                className="object-cover transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-          </RevealOnScroll>
-
-          <RevealOnScroll className="sm:col-span-2" delayMs={200}>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] bg-ink sm:h-full">
-              <Image
-                src={third.src}
-                alt={third.alt}
-                fill
-                sizes="(min-width: 640px) 30vw, 100vw"
-                className="object-cover grayscale transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-          </RevealOnScroll>
+          {[second, third].map((image, index) => (
+            <RevealOnScroll
+              key={image.src}
+              className="sm:col-span-2"
+              delayMs={(index + 1) * 100}
+            >
+              <figure className="group relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] bg-ink sm:h-full">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width: 640px) 30vw, 100vw"
+                  className={imageClass(image.monochrome)}
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent px-5 pb-4 pt-12 text-sm uppercase tracking-[0.2em] text-ivory">
+                  {image.caption}
+                </figcaption>
+              </figure>
+            </RevealOnScroll>
+          ))}
         </div>
 
         <RevealOnScroll delayMs={260}>
@@ -63,7 +69,7 @@ export default function Gallery() {
                 alt={fourth.alt}
                 fill
                 sizes="112px"
-                className="object-cover"
+                className={imageClass(fourth.monochrome)}
               />
             </div>
             <blockquote className="font-serif text-xl italic leading-snug text-ink sm:text-2xl">
@@ -71,6 +77,46 @@ export default function Gallery() {
             </blockquote>
           </figure>
         </RevealOnScroll>
+
+        {memories.length > 0 && (
+          <div className="mt-16">
+            <RevealOnScroll>
+              <div className="flex flex-col gap-3 border-t border-mist pt-8 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.35em] text-moss">
+                    Family Album
+                  </p>
+                  <h3 className="mt-3 font-serif text-3xl text-ink sm:text-4xl">
+                    Their journey in black and white
+                  </h3>
+                </div>
+                <p className="max-w-md text-sm leading-relaxed text-graphite">
+                  These added memories are presented in monochrome so they sit
+                  beautifully with the existing wedding theme.
+                </p>
+              </div>
+            </RevealOnScroll>
+
+            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {memories.map((image, index) => (
+                <RevealOnScroll key={image.src} delayMs={index * 80}>
+                  <figure className="group relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-ink shadow-[0_24px_50px_-30px_rgba(44,46,44,0.45)]">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw"
+                      className={imageClass(true)}
+                    />
+                    <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent px-5 pb-5 pt-14 font-serif text-xl text-ivory">
+                      {image.caption}
+                    </figcaption>
+                  </figure>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
