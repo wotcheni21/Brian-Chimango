@@ -117,6 +117,56 @@ export default function Gallery() {
             </div>
           </div>
         )}
+
+        <div className="relative mt-20 overflow-hidden rounded-[2.25rem] bg-evergreen px-5 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-16">
+          <div
+            className="absolute -right-24 -top-24 h-72 w-72 rounded-full border border-mint/15"
+            aria-hidden
+          />
+          <div
+            className="absolute -bottom-32 -left-24 h-80 w-80 rounded-full border border-gilt/15"
+            aria-hidden
+          />
+
+          <RevealOnScroll className="relative">
+            <div className="flex max-w-3xl flex-col gap-4">
+              <p className="text-xs uppercase tracking-[0.35em] text-mint">
+                Family Milestones
+              </p>
+              <h3 className="font-serif text-4xl leading-tight text-ivory sm:text-5xl">
+                The life and love they built
+              </h3>
+              <p className="max-w-2xl text-sm leading-relaxed text-fog/85 sm:text-base">
+                Through celebrations, achievements and everyday joys, family
+                remains at the centre of their story.
+              </p>
+            </div>
+          </RevealOnScroll>
+
+          <div className="relative mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:items-start lg:gap-10">
+            {gallery.familyHighlights.map((image, index) => (
+              <RevealOnScroll
+                key={image.src}
+                className={index === 1 ? "sm:mt-20" : "sm:mr-6"}
+                delayMs={(index + 1) * 120}
+              >
+                <figure className="group relative aspect-[3/4] overflow-hidden rounded-[1.75rem] border border-ivory/15 bg-ink shadow-[0_35px_70px_-30px_rgba(0,0,0,0.65)]">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(min-width: 640px) 42vw, 90vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+                  <figcaption className="absolute inset-x-0 bottom-0 px-6 pb-6 pt-20 font-serif text-2xl leading-snug text-ivory sm:text-3xl">
+                    {image.caption}
+                  </figcaption>
+                </figure>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
