@@ -36,6 +36,16 @@ export default function Rsvp() {
             tone="light"
             description="Please respond by 26 July 2026 so we can prepare a seat, a plate and a toast just for you."
           />
+          <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-gilt/45 bg-gilt/10 px-6 py-5 text-center">
+            <p className="text-xs uppercase tracking-[0.28em] text-mint">
+              A note for families
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-fog sm:text-base">
+              Children are warmly welcome during the afternoon ceremony and
+              luncheon. From 18:00 onwards, we kindly ask that the celebration
+              be adults-only as the evening session will be more intimate.
+            </p>
+          </div>
         </RevealOnScroll>
 
         <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-14">
