@@ -10,6 +10,8 @@ export const couple = {
 export const familyStory = {
   courtMarriageDate: "16 February 2013",
   children: "3 boys",
+  loveRoot:
+    "13 years of love and 3 adorable boys has made our love stronger and more meaningful than ever before, and we will continue this journey together forever in holy matrimony. Join us to celebrate our marriage officiation in the presence of our Lord Jesus Christ, our family and friends.",
 };
 
 export const weddingDate = {
@@ -77,7 +79,7 @@ export type RsvpContact = {
 
 export const rsvpContacts: RsvpContact[] = [
   { name: "Deborah Nakhumwa", phone: "+265990343566" },
-  { name: "Florence Nakhumwa", phone: "+265999275877" },
+  { name: "Charles Reengo Whayo", phone: "+265 999 95 84 35" },
 ];
 
 export type OutfitInspoItem = {
@@ -148,14 +150,14 @@ export const outfitInspo: OutfitInspoItem[] = [
     image: "/images/outfit/gentlemen-shoes.png",
   },
   {
-    label: "Ladies: Dress",
-    note: "Soft sage with warm gold accessories",
-    image: "/images/outfit/ladies-dress.png",
+    label: "Ladies: Scarf Gown",
+    note: "Soft sage chiffon with warm gold accessories",
+    image: "/images/outfit/ladies-scarf-gown.jpg",
   },
   {
-    label: "Ladies: Jumpsuit",
-    note: "Sage or evergreen tailoring",
-    image: "/images/outfit/ladies-jumpsuit.png",
+    label: "Ladies: Draped Gown",
+    note: "Soft sage with an elegant flowing silhouette",
+    image: "/images/outfit/ladies-draped-gown.jpg",
   },
   {
     label: "Ladies: Accessories",
