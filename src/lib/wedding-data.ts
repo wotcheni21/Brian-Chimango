@@ -172,6 +172,18 @@ export const outfitInspo: OutfitInspoItem[] = [
 ];
 
 export const gallery = {
+  familyHighlights: [
+    {
+      src: "/images/family/family-formal-day.jpeg",
+      alt: "Brian and Chimango dressed formally with two of their sons",
+      caption: "The family at the heart of it all",
+    },
+    {
+      src: "/images/family/family-graduation.jpeg",
+      alt: "Brian and Chimango celebrating a graduation with their three sons",
+      caption: "A milestone shared together",
+    },
+  ],
   images: [
     {
       src: "/images/couple-doorway-full.jpg",
