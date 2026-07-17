@@ -29,30 +29,9 @@ export default function OurStory() {
             <p>{familyStory.loveRoot}</p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="border-l-2 border-gilt bg-ivory px-5 py-4">
-              <span className="text-xs uppercase tracking-[0.28em] text-moss">
-                First marriage
-              </span>
-              <p className="mt-2 font-serif text-2xl text-ink">
-                {familyStory.courtMarriageDate}
-              </p>
-              <p className="mt-1 text-sm text-graphite">At court</p>
-            </div>
-            <div className="border-l-2 border-evergreen bg-ivory px-5 py-4">
-              <span className="text-xs uppercase tracking-[0.28em] text-moss">
-                Family
-              </span>
-              <p className="mt-2 font-serif text-2xl text-ink">
-                {familyStory.children}
-              </p>
-              <p className="mt-1 text-sm text-graphite">Three sons</p>
-            </div>
-          </div>
-
           <a
             href="#details"
-            className="mt-10 inline-flex w-fit items-center gap-3 border-b border-evergreen pb-1 text-xs uppercase tracking-[0.3em] text-evergreen transition-colors hover:text-moss"
+            className="mt-8 inline-flex w-fit items-center gap-3 border-b border-evergreen pb-1 text-xs uppercase tracking-[0.3em] text-evergreen transition-colors hover:text-moss"
           >
             See the details
             <span aria-hidden>&rarr;</span>
