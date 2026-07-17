@@ -1,7 +1,7 @@
 import Image from "next/image";
 import RevealOnScroll from "./RevealOnScroll";
 import SectionHeading from "./SectionHeading";
-import { couple, familyStory } from "@/lib/wedding-data";
+import { familyStory } from "@/lib/wedding-data";
 
 export default function OurStory() {
   return (
@@ -26,17 +26,7 @@ export default function OurStory() {
             align="left"
           />
           <div className="mt-8 flex flex-col gap-5 text-base leading-relaxed text-graphite sm:text-lg">
-            <p>
-              {couple.partnerOne} and {couple.partnerTwo} began their marriage
-              journey at court on {familyStory.courtMarriageDate}. Since then,
-              their love has grown into a home shaped by patience, faith, and
-              the everyday kindnesses that make a family strong.
-            </p>
-            <p>
-              Together they have been blessed with {familyStory.children}, and
-              now they gather the people who have shaped their story to witness
-              this next chapter with joy, gratitude, and celebration.
-            </p>
+            <p>{familyStory.loveRoot}</p>
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
