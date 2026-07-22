@@ -7,11 +7,17 @@ export const couple = {
   hashtag: "#Brian&Chimango2026",
 };
 
+export const heroMessage =
+  "With hearts overflowing with gratitude and love, we warmly invite you to celebrate one of the most meaningful moments of our lives, as we continue our forever together as husband and wife. Join us for an evening filled with love, laughter, joy, and cherished memories.";
+
 export const familyStory = {
   courtMarriageDate: "16 February 2013",
   children: "3 boys",
-  loveRoot:
-    "13 years of love and 3 adorable boys has made our love stronger and more meaningful than ever before, and we will continue this journey together forever in holy matrimony. Join us to celebrate our marriage officiation in the presence of our Lord Jesus Christ, our family and friends.",
+  paragraphs: [
+    "Over the past 13 wonderful years, we have built a life together, strengthened by love, faith, and the joy of raising our three amazing children. Every moment has deepened our bond and prepared us for this beautiful day.",
+    "With grateful hearts, we invite you to join us as we exchange our marriage vows and are united in holy matrimony before our Lord Jesus Christ, surrounded by our beloved families.",
+    "Your presence, love, and prayers will make our celebration even more meaningful, and we would be truly honoured to share this special day with you.",
+  ],
 };
 
 export const weddingDate = {
@@ -41,11 +47,17 @@ export type ScheduleItem = {
   title: string;
   description?: string;
   details?: string[];
+  highlighted?: boolean;
 };
 
 export const schedule: ScheduleItem[] = [
   { time: "12:30", title: "Guests Arrive", description: "Guests arrive and take their seats" },
-  { time: "13:00", title: "Bridal Party Arrival", description: "Arrival of the bridal party and processional" },
+  {
+    time: "13:00",
+    title: "Bridal Party Arrival",
+    description: "Arrival of the bridal party and processional",
+    highlighted: true,
+  },
   { time: "13:05", title: "Opening Prayer" },
   { time: "13:10", title: "Welcome Address" },
   { time: "13:15", title: "Praise & Worship / Hymn" },
@@ -64,10 +76,15 @@ export const schedule: ScheduleItem[] = [
   },
   { time: "14:15", title: "Presentation of the Newlyweds" },
   { time: "14:20", title: "Recessional & Congratulations" },
-  { time: "14:30", title: "Luncheon" },
+  { time: "14:30", title: "Luncheon", highlighted: true },
   { time: "15:30", title: "Photography Session", description: "Portraits with the newlyweds" },
   { time: "17:00", title: "Travel & Freshen Up", description: "Preparation for the reception" },
-  { time: "18:00", title: "Dinner & Celebration", description: "Speeches and dinner service" },
+  {
+    time: "18:00",
+    title: "Dinner & Celebration",
+    description: "Speeches and dinner service",
+    highlighted: true,
+  },
   { time: "20:00", title: "Toasts & Cake Cutting", description: "Raise a glass to the newlyweds" },
   { time: "21:00", title: "Closing & After Celebration", description: "Dancing into the evening" },
 ];
