@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { couple, weddingDate } from "@/lib/wedding-data";
+import { couple, heroMessage, weddingDate } from "@/lib/wedding-data";
 
 export default function Hero() {
   return (
@@ -37,10 +37,8 @@ export default function Hero() {
             <span className="ornament text-sm uppercase tracking-[0.35em] text-fog">
               {weddingDate.display}
             </span>
-            <p className="max-w-md text-base leading-relaxed text-fog/90 sm:text-lg">
-              With hearts full of gratitude, we invite you to witness the
-              beginning of our forever — an evening of love, laughter and
-              celebration.
+            <p className="max-w-xl text-base leading-relaxed text-fog/90 sm:text-lg">
+              {heroMessage}
             </p>
           </div>
 
