@@ -26,7 +26,9 @@ export default function OurStory() {
             align="left"
           />
           <div className="mt-8 flex flex-col gap-5 text-base leading-relaxed text-graphite sm:text-lg">
-            <p>{familyStory.loveRoot}</p>
+            {familyStory.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
 
           <a
