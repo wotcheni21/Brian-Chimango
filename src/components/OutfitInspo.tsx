@@ -19,7 +19,7 @@ function PaletteCard({
   return (
     <div className="grid h-full min-h-[520px] overflow-hidden rounded-[1.75rem] border border-mist bg-paper shadow-[0_24px_60px_-38px_rgba(44,46,44,0.45)] sm:grid-cols-2">
       <div className="flex min-h-[300px] items-center justify-center bg-ivory px-7 py-8">
-        <div className="relative aspect-[2/3] h-full max-h-[380px] w-full max-w-[220px]">
+        <div className="relative aspect-square w-full max-w-[300px]">
           <Image
             src={image}
             alt={title}
