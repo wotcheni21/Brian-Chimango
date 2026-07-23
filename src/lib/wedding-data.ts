@@ -120,7 +120,7 @@ export const outfitPalettes: OutfitPalette[] = [
     audience: "For men",
     title: "Grey colour palette",
     description: "Clean grey tailoring, from deep charcoal to soft silver.",
-    image: "/images/new pictures/Colour Palette 1.jpeg",
+    image: "/images/palette-men-grey.jpeg",
     swatches: [
       { label: "Charcoal", color: "#535557" },
       { label: "Graphite", color: "#6f706e" },
@@ -132,7 +132,7 @@ export const outfitPalettes: OutfitPalette[] = [
     audience: "For ladies",
     title: "Sage green with gold accessories",
     description: "Soft sage and evergreen outfits finished with warm gold accents.",
-    image: "/images/new pictures/Colour Palette 2.jpeg",
+    image: "/images/palette-ladies-sage.jpeg",
     swatches: [
       { label: "Sage Hint", color: "#bfcfbb" },
       { label: "Sage", color: "#8ea58c" },
