@@ -16,49 +16,84 @@ function PaletteCard({
   image: string;
   swatches: { label: string; color: string }[];
 }) {
+  const lightTone =
+    audience === "For men"
+      ? swatches[swatches.length - 1].color
+      : swatches[0].color;
+  const deepTone =
+    swatches.find((swatch) => swatch.label === "Evergreen")?.color ??
+    swatches[0].color;
+  const accentTone =
+    swatches.find((swatch) => swatch.label === "Gold")?.color ??
+    swatches[Math.floor(swatches.length / 2)].color;
+
   return (
-    <div className="grid h-full min-h-[520px] overflow-hidden rounded-[1.75rem] border border-mist bg-paper shadow-[0_24px_60px_-38px_rgba(44,46,44,0.45)] sm:grid-cols-2">
-      <div className="flex min-h-[300px] items-center justify-center bg-ivory px-7 py-8">
-        <div className="relative aspect-square w-full max-w-[300px]">
+    <article className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-mist bg-paper p-6 shadow-[0_28px_70px_-42px_rgba(44,46,44,0.5)] sm:p-8">
+      <div
+        className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full blur-2xl"
+        style={{ backgroundColor: `${lightTone}59` }}
+        aria-hidden
+      />
+
+      <div className="relative">
+        <span className="text-[11px] uppercase tracking-[0.34em] text-moss">
+          {audience}
+        </span>
+        <h3 className="mt-4 font-serif text-3xl leading-tight text-ink sm:text-4xl">
+          {title}
+        </h3>
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-graphite sm:text-base">
+          {description}
+        </p>
+      </div>
+
+      <div
+        className="relative mt-7 overflow-hidden rounded-[1.5rem] border p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] sm:p-7"
+        style={{
+          borderColor: `${deepTone}2e`,
+          background: `radial-gradient(circle at 12% 12%, ${lightTone}8c 0%, transparent 42%), radial-gradient(circle at 88% 88%, ${deepTone}40 0%, transparent 48%), linear-gradient(135deg, #fbfaf6 12%, ${accentTone}38 100%)`,
+        }}
+      >
+        <div
+          className="pointer-events-none absolute inset-x-10 bottom-2 h-12 rounded-full blur-2xl"
+          style={{ backgroundColor: `${deepTone}24` }}
+          aria-hidden
+        />
+        <div className="relative mx-auto aspect-[7/5] w-full max-w-[420px]">
           <Image
             src={image}
             alt={title}
             fill
             unoptimized
             sizes="(min-width: 1024px) 20vw, 70vw"
-            className="object-contain"
+            className="object-contain mix-blend-multiply"
           />
         </div>
       </div>
-      <div className="flex min-h-[300px] flex-col px-6 py-8 sm:px-8">
-        <span className="text-xs uppercase tracking-[0.32em] text-moss">
-          {audience}
+
+      <div className="mt-7 border-t border-mist/80 pt-6">
+        <span className="text-[10px] uppercase tracking-[0.28em] text-graphite/70">
+          Palette shades
         </span>
-        <h3 className="mt-5 min-h-[5.5rem] font-serif text-3xl leading-tight text-ink sm:text-4xl">
-          {title}
-        </h3>
-        <p className="mt-4 min-h-[4.5rem] text-sm leading-relaxed text-graphite sm:text-base">
-          {description}
-        </p>
-        <div className="mt-auto flex flex-wrap gap-x-4 gap-y-3 pt-7">
+        <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
           {swatches.map((swatch) => (
             <div
               key={swatch.label}
-              className="flex min-w-[6.75rem] max-w-full items-center gap-2"
+              className="flex min-w-0 items-center gap-2.5 rounded-full border border-mist/80 bg-ivory/80 px-3 py-2"
             >
               <span
-                className="h-7 w-7 shrink-0 rounded-full border border-ink/10 sm:h-8 sm:w-8"
+                className="h-6 w-6 shrink-0 rounded-full border border-ink/10"
                 style={{ backgroundColor: swatch.color }}
                 aria-hidden
               />
-              <span className="break-words text-[11px] uppercase tracking-[0.12em] text-graphite">
+              <span className="truncate text-[10px] uppercase tracking-[0.1em] text-graphite">
                 {swatch.label}
               </span>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
